@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirect from Instagram Browser</title>
+  <!-- Ensure your page is served over HTTPS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<script>
+// Get the user agent string from the browser
+var ua = navigator.userAgent || navigator.vendor;
+var isInstagram = (ua.indexOf('Instagram') > -1);
+
+// Check if we are in the Instagram in-app browser
+if (isInstagram) {
+  // For iOS devices
+  if (/iPad|iPhone|iPod/.test(ua)) {
+    // The 'x-safari-https' scheme forces the link to open in Safari
+    window.location.href = 'x-safari-https://google.com';
+  } else {
+    // For Android, using the Google Chrome scheme (ensure Chrome is installed)
+    window.location.href = 'googlechrome://example.com';
+  }
+}
+</script>
+
+<p>If you are not using Instagram's in-app browser, you will see this content.</p>
+
+</body>
+</html>
+
